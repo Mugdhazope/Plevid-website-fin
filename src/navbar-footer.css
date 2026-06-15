@@ -62,7 +62,7 @@
   background-color: #ffffff;
   color: #000000;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 48px 24px 40px;
+  padding: 72px 24px 40px;
 }
 
 .plevid-footer__inner {
@@ -159,7 +159,7 @@
 
 @media (min-width: 768px) {
   .plevid-footer {
-    padding: 48px 40px 40px;
+    padding: 72px 40px 40px;
   }
 
   .plevid-footer__grid {

@@ -4,39 +4,81 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 
 let locoScroll = null;
+let refreshHandler = null;
+
+function has(selector) {
+  return !!document.querySelector(selector);
+}
+
+function clearLandingScroll() {
+  if (refreshHandler) {
+    ScrollTrigger.removeEventListener('refresh', refreshHandler);
+    refreshHandler = null;
+  }
+
+  if (has('#main')) {
+    ScrollTrigger.scrollerProxy('#main', {
+      scrollTop(value) {
+        return arguments.length ? window.scrollTo(0, value) : window.scrollY;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      pinType: 'fixed',
+    });
+  }
+}
 
 function loco() {
+  const main = document.querySelector('#main');
+  if (!main) return;
+
   gsap.registerPlugin(ScrollTrigger);
 
-  // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
-
   locoScroll = new LocomotiveScroll({
-    el: document.querySelector("#main"),
-    smooth: true
+    el: main,
+    smooth: true,
   });
-  // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-  locoScroll.on("scroll", ScrollTrigger.update);
 
-  // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
-  ScrollTrigger.scrollerProxy("#main", {
+  locoScroll.on('scroll', ScrollTrigger.update);
+
+  ScrollTrigger.scrollerProxy('#main', {
     scrollTop(value) {
-      return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-    getBoundingClientRect() {
-      return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+      if (!locoScroll?.scroll?.instance?.scroll) {
+        return arguments.length ? window.scrollTo(0, value) : window.scrollY;
+      }
+
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
     },
-    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-    pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    pinType: main.style.transform ? 'transform' : 'fixed',
   });
 
-  // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
-  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+  refreshHandler = () => {
+    if (locoScroll) locoScroll.update();
+  };
+  ScrollTrigger.addEventListener('refresh', refreshHandler);
 
-  // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
   ScrollTrigger.refresh();
 }
 
 function loader() {
+  if (!has('.page1-roll-track')) return;
+
   var tl1 = gsap.timeline({})
 
   tl1
@@ -57,6 +99,8 @@ function loader() {
 }
 
 function pgOne() {
+  if (!has('#page1')) return;
+
   var tl = gsap.timeline({
     scrollTrigger: {
       trigger: "#page1",
@@ -82,7 +126,7 @@ function pgOne() {
 
 function initMenuTheme() {
   const menu = document.querySelector(".plevid-staggered-menu")
-  if (!menu) return
+  if (!menu || !has('#page2')) return
 
   menu.classList.add("plevid-staggered-menu--light")
 
@@ -108,6 +152,8 @@ export function scrollToSection(href) {
 }
 
 function pgTwo(){
+  if (!has('#page2')) return;
+
   var tl = gsap.timeline({
     scrollTrigger:{
       trigger:"#page2",
@@ -140,37 +186,45 @@ function pgTwo(){
 }
 
 function page3(){
-  var tl3 = gsap.timeline({
-    scrollTrigger:{
-      trigger:"#page3",
-      scroller:"#main",
-      // markers:true,
-      start:"top 80%",
-      end:"top 65%",
-      scrub:2
-    }
+  if (!has('#page3')) return;
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page3",
+      scroller: "#main",
+      start: "top top",
+      end: "top -100%",
+      scrub: 2,
+      pin: true,
+    },
   })
-  tl3
-  .from("#page3 #l1",{
-    width:"0%"
-  },"l")
-  .from("#page3 #line3-vt",{
-    height:"0%"
-  },"l")
-  gsap.from("#page3 #l2",{
-    width:"0%",
-    scrollTrigger:{
-      trigger:"#page3",
-      scroller:"#main",
-      // markers:true,
-      start:"bottom 90%",
-      end:"bottom 85%",
-      scrub:2
-    }
-  })
+
+  tl.from("#page3 #l1", { width: "0%" }, 0)
+    .from("#page3 #line3-vt", { height: "0%" }, 0)
+    .fromTo("#page3 .igs", {
+      width: "65%",
+      height: "75%",
+    }, {
+      width: "100%",
+      height: "100%",
+      ease: "none",
+    }, 0)
+    .fromTo("#page3 .igs h2, #page3 .igs h5", {
+      scale: 1,
+      opacity: 0.7,
+      marginTop: 0,
+    }, {
+      scale: 2,
+      opacity: 1,
+      marginTop: 10,
+      ease: "none",
+    }, 0)
+    .from("#page3 #l2", { width: "0%" }, 0.85)
 }
 
 function eightAnime(){
+  if (!has('#page4 img')) return;
+
   gsap.to("#page4 img",{
     scale:20,
     rotate:90,
@@ -189,6 +243,8 @@ function eightAnime(){
 }
 
 function pg5(){
+  if (!has('#page5')) return;
+
   var tl5 = gsap.timeline({
     scrollTrigger:{
       trigger:"#page5",
@@ -213,6 +269,8 @@ function pg5(){
 }
 
 function pg6(){
+  if (!has('#page6')) return;
+
   var tl6 = gsap.timeline({
     scrollTrigger:{
       trigger:"#page6",
@@ -255,6 +313,7 @@ function pg6(){
 
 function initPage9Overlays() {
   var over = document.querySelectorAll("#page9 .over")
+  if (!over.length) return;
 
   over.forEach(function(ov){
     gsap.to(ov,{
@@ -272,6 +331,8 @@ function initPage9Overlays() {
 }
 
 function initPage13() {
+  if (!has('#page13')) return;
+
   var tl13 = gsap.timeline({
     scrollTrigger:{
       trigger:"#page13",
@@ -295,6 +356,8 @@ function initPage13() {
 }
 
 function initPage10() {
+  if (!has('#page10')) return;
+
   var tl10 = gsap.timeline({
     scrollTrigger:{
       trigger:"#page10",
@@ -315,6 +378,8 @@ function initPage10() {
 }
 
 function initPage14() {
+  if (!has('#page14')) return;
+
   var tl14 = gsap.timeline({
     scrollTrigger:{
       trigger:"#page14",
@@ -350,6 +415,8 @@ function initAnchorLinks() {
 }
 
 export function initAnimations() {
+  if (!has('#main')) return;
+
   loco()
   initAnchorLinks()
   initMenuTheme()
@@ -368,8 +435,11 @@ export function initAnimations() {
 
 export function destroyAnimations() {
   ScrollTrigger.getAll().forEach((t) => t.kill());
+
   if (locoScroll) {
     locoScroll.destroy();
     locoScroll = null;
   }
+
+  clearLandingScroll();
 }

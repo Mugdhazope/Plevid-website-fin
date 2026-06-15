@@ -72,8 +72,8 @@ export default function LandingPage() {
       </div>
       <div id="page6">
         <div id="elem1">
-          <h4>All Residential</h4>
-          <h4>All Commercial</h4>
+          {/* <h4>All Residential</h4> */}
+          {/* <h4>All Commercial</h4> */}
           <div id="line6"></div>
           <div id="line6-vt"></div>
         </div>
@@ -82,22 +82,13 @@ export default function LandingPage() {
           <div id="line6-h"></div>
         </div>
         <div id="elem3">
-          <h4>We help you</h4>
-          <h4>implement bespoke lighting solutions</h4>
+          {/* <h4>We help you</h4>
+          <h4>implement bespoke lighting solutions</h4> */}
           <div id="linee"></div>
         </div>
         <div id="para">
           <p>Plevid is a luxury lighting brand, sourcing premium designs from Italy. We create lighting experiences that enhance architecture, interiors, and mood with precision and elegance.</p>
         </div>
-      </div>
-      <div id="page7">
-        <div id="slide7">
-          <h1>Design by Plevid<sup>®</sup></h1>
-          <h1>Design by Plevid<sup>®</sup></h1>
-        </div>
-      </div>
-      <div id="page8">
-        <img data-scroll data-scroll-speed="-2" src="/img/plevvv.png" alt="Design by Plevid" />
       </div>
       <div id="page9">
         <img id="ig91" data-scroll data-scroll-speed="5" src="https://selemen.liqium.com/img/lt1.jpg" alt="" />
@@ -164,6 +155,15 @@ export default function LandingPage() {
         <span id="process" className="plevid-anchor" aria-hidden="true" />
         {/* <h1>Customizable Collections</h1> */}
         {/* <p>We help you bring your lighting vision to life, no matter the scale or style</p> */}
+      </div>
+      <div id="page7">
+        <div id="slide7">
+          <h1>Design by Origin4</h1>
+          <h1>Design by Origin4</h1>
+        </div>
+      </div>
+      <div id="page8">
+        <img src="/img/plevvv.png" alt="Design by Origin4" />
       </div>
       <Footer />
       </div>

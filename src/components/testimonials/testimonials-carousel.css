@@ -1,0 +1,207 @@
+.t-carousel-wrap {
+  --t-card-width: min(340px, calc(100vw - 160px));
+  --t-card-height: 220px;
+  --t-transition: 750ms;
+  --t-accent: oklch(0.93 0.19 125);
+
+  position: relative;
+  padding: 48px 16px 96px;
+}
+
+.t-carousel__controls {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 12px;
+  width: min(calc(100% - 2rem), 1200px);
+  margin: 0 auto;
+}
+
+.t-carousel__middle {
+  position: relative;
+  min-height: var(--t-card-height);
+}
+
+.t-carousel {
+  display: flex;
+  gap: 0;
+  padding-inline: calc(50% - var(--t-card-width) / 2);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.t-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.t-carousel__snap {
+  flex: 0 0 var(--t-card-width);
+  height: var(--t-card-height);
+  margin: 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.t-carousel__stage {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--t-card-width);
+  height: var(--t-card-height);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.t-carousel__card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.t-carousel__quote {
+  margin: 0;
+  align-self: end;
+  font-family: var(--plevid-font-serif);
+  font-style: italic;
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.55;
+  color: #000000;
+  opacity: 0;
+  transform: translateY(calc(var(--t-card-height) * -0.45));
+  transition:
+    opacity var(--t-transition) ease-in-out calc(var(--t-transition) * 0.5),
+    transform var(--t-transition) ease-in-out calc(var(--t-transition) * 0.5);
+}
+
+.t-carousel__card.is-active .t-carousel__quote {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.t-carousel__cite {
+  margin: 0;
+  text-align: right;
+  opacity: 0;
+  transition: opacity var(--t-transition) ease var(--t-transition);
+}
+
+.t-carousel__card.is-active .t-carousel__cite {
+  opacity: 1;
+}
+
+.t-carousel__cite cite {
+  display: block;
+  font-family: var(--plevid-font-sans);
+  font-style: normal;
+  font-size: var(--plevid-text-sm);
+  font-weight: var(--plevid-weight-bold);
+  color: #000000;
+}
+
+.t-carousel__cite span {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--plevid-font-serif);
+  font-style: italic;
+  font-size: var(--plevid-text-xs);
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.t-carousel__nav {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.65;
+  cursor: pointer;
+  transition:
+    opacity 75ms ease-in-out,
+    transform 75ms ease-in-out,
+    background-color 75ms ease-in-out,
+    border-color 75ms ease-in-out;
+}
+
+.t-carousel__nav:hover,
+.t-carousel__nav:focus-visible {
+  opacity: 1;
+  transform: scale(1.08);
+  background: rgba(200, 255, 77, 0.4);
+  border-color: #000000;
+  outline: none;
+}
+
+.t-carousel__nav:focus-visible {
+  outline: 1px dashed var(--t-accent);
+  outline-offset: 3px;
+}
+
+.t-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+.t-carousel__dot {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out, outline 150ms ease-in-out;
+}
+
+.t-carousel__dot.is-active {
+  background: var(--t-accent);
+  border-color: #000000;
+  outline: 1px solid #000000;
+  outline-offset: 2px;
+}
+
+.t-carousel__dot:hover,
+.t-carousel__dot:focus-visible {
+  background: var(--t-accent);
+  outline: none;
+}
+
+.t-carousel__dot:focus-visible {
+  outline: 1px dashed #000000;
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .t-carousel-wrap {
+    padding-bottom: 72px;
+  }
+
+  .t-carousel__controls {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    gap: 8px;
+  }
+
+  .t-carousel__nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}

@@ -343,7 +343,7 @@ width: 100%;
     font-weight: var(--plevid-weight-medium);
     line-height: var(--plevid-leading-snug);
     letter-spacing: var(--plevid-tracking-tight);
-    color: #ffffff;
+    color: #3c3b3b;
     margin-bottom: 50px;
     z-index: 3;
 }
@@ -364,9 +364,12 @@ width: 100%;
 #page3{
     position: relative;
     width: 100%;
-    height: 170vh;
+    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    overflow: hidden;
+    background-color: #ffffff;
 }
 .line3{
     width: calc(100% - 80px);
@@ -395,21 +398,28 @@ width: 100%;
     width: 50%;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     flex-direction: column;
     text-align: center;
-    padding: 25px 0;
+    padding: 0;
+    position: relative;
 }
 #page3 #right{
     width: 50%;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     flex-direction: column;
     text-align: center;
-    padding: 25px 0;
+    padding: 0;
+    position: relative;
 }
 #page3 h3{
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
     font-family: var(--plevid-font-serif);
     font-style: italic;
     font-size: var(--plevid-text-sm);
@@ -418,7 +428,13 @@ width: 100%;
     color: #A9ABB5;
 }
 #page3 h4{
-    margin-top: 35px;
+    position: absolute;
+    top: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(320px, 80%);
+    z-index: 2;
+    margin-top: 0;
     font-family: var(--plevid-font-sans);
     font-size: var(--plevid-text-base);
     font-weight: var(--plevid-weight-regular);
@@ -427,17 +443,17 @@ width: 100%;
 }
 #page3 .over{
     width: 100%;
-    height: 120vh;
-    margin-top: 150px;
+    height: 100%;
+    margin-top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 #page3 #left .over{
-    padding-right: 60px;
+    padding-right: 0;
 }
 #page3 #right .over{
-    padding-left: 60px;
+    padding-left: 0;
 }
 #page3 .igs{
     width: 65%;
@@ -445,7 +461,7 @@ width: 100%;
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    transition: all ease 1s;
+    transition: width 1s ease, height 1s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -458,7 +474,7 @@ width: 100%;
     font-weight: var(--plevid-weight-medium);
     line-height: var(--plevid-leading-normal);
     color: #fff;
-    transition: all ease 0.5s;
+    transition: opacity 0.5s ease, transform 0.5s ease, margin-top 0.5s ease;
     opacity: .7;
 
 }
@@ -469,7 +485,7 @@ width: 100%;
     line-height: var(--plevid-leading-heading);
     letter-spacing: var(--plevid-tracking-heading);
     color: #fff;
-    transition: all ease 0.5s;
+    transition: opacity 0.5s ease, transform 0.5s ease, margin-top 0.5s ease;
     opacity: .7;
 
 
@@ -480,11 +496,13 @@ width: 100%;
 #page3 #right .igs{
     background-image: url(https://selemen.liqium.com/img/j3.jpg);
 }
-#page3 .over:hover .igs{
+#page3 .over:hover .igs,
+#page3 .over.is-scroll-expanded .igs{
 width: 100%;
 height: 100%;
 }
-#page3 .over:hover .igs h2,#page3 .over:hover .igs h5{
+#page3 .over:hover .igs h2,#page3 .over:hover .igs h5,
+#page3 .over.is-scroll-expanded .igs h2,#page3 .over.is-scroll-expanded .igs h5{
     margin-top: 10px;
     scale: 2;
     opacity: 1;
@@ -557,10 +575,9 @@ height: 100%;
     z-index: 3;
 }
 #page6{
-    height: 100vh;
+    height: auto;
     width: 100%;
-    /* background-color: red; */
-    padding: 0 40px;
+    padding: 0 40px 48px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -568,7 +585,7 @@ height: 100%;
 #elem1{
     position: relative;
     width: 100%;
-    height: 18%;
+    min-height: 72px;
     display: flex;
     align-items: end;
     justify-content: space-between;
@@ -602,7 +619,7 @@ height: 100%;
 #elem2{
     position: relative;
     width: 100%;
-    height: 18%;
+    min-height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -633,7 +650,7 @@ height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 180px;
+    margin-top: 48px;
 }
 #elem3 h4{
     font-family: var(--plevid-font-sans);
@@ -646,7 +663,7 @@ height: 100%;
 #para{
     width: 35%;
     overflow: hidden;
-    margin-top: 120px;
+    margin-top: 48px;
 }
 #para p{
     font-family: var(--plevid-font-sans);
@@ -702,6 +719,8 @@ height: 100%;
 #page8{
     height: 110vh;
     width: 100%;
+    overflow: hidden;
+    margin-bottom: 64px;
 }
 #page8 img{
     height: 100%;
@@ -712,7 +731,7 @@ height: 100%;
 #page9{
     position: relative;
     padding: 20px;
-    padding-top: 200px;
+    padding-top: 64px;
     background-color: #ffffff;
     padding-bottom: 300px;
     overflow: hidden;
