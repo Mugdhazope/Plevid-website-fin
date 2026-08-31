@@ -25,3 +25,5 @@ npm run preview
 - `/services` — Services
 - `/testimonials` — Testimonials
 - `/contact` — Contact
+
+<img width="1680" height="934" alt="image" src="https://github.com/user-attachments/assets/91ad6c59-4eb1-4bb5-afe7-d9b8aa9355be" />
