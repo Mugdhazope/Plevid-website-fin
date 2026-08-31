@@ -1,0 +1,140 @@
+.svc-bento {
+  padding: 0 24px 96px;
+}
+
+.svc-bento__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.svc-bento__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+@media (min-width: 768px) {
+  .svc-bento__grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+}
+
+.svc-bento__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px 24px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid transparent;
+  background: #ffffff;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.svc-bento__card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.svc-bento__card:hover {
+  border-top-color: var(--svc-accent-strong);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
+}
+
+.svc-bento__card.is-visible:hover {
+  transform: translateY(-4px);
+}
+
+@media (min-width: 768px) {
+  .svc-bento__card--col-7 {
+    grid-column: span 7;
+  }
+
+  .svc-bento__card--col-5 {
+    grid-column: span 5;
+  }
+
+  .svc-bento__card--col-6 {
+    grid-column: span 6;
+  }
+
+  .svc-bento__card--full {
+    grid-column: 1 / -1;
+  }
+}
+
+.svc-bento__number {
+  font-size: var(--plevid-text-sm);
+  font-weight: var(--plevid-weight-medium);
+  letter-spacing: 0.06em;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.svc-bento__title {
+  margin: 0;
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: var(--plevid-weight-bold);
+  line-height: var(--plevid-leading-heading);
+  letter-spacing: var(--plevid-tracking-heading);
+  text-transform: lowercase;
+  color: #000000;
+}
+
+.svc-bento__desc {
+  margin: 0;
+  font-size: var(--plevid-text-base);
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.svc-bento__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.svc-bento__pill {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: var(--plevid-text-xs);
+  line-height: 1.3;
+  color: rgba(0, 0, 0, 0.72);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.svc-bento__card:hover .svc-bento__pill {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+.svc-bento__footer {
+  margin: auto 0 0;
+  padding-top: 8px;
+  font-family: var(--plevid-font-serif);
+  font-style: italic;
+  font-size: var(--plevid-text-sm);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 767px) {
+  .svc-bento {
+    padding-bottom: 72px;
+  }
+
+  .svc-bento__card {
+    padding: 24px 20px 20px;
+  }
+}

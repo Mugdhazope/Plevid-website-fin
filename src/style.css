@@ -83,7 +83,7 @@ width: 100%;
     position: absolute;
     z-index: 3;
     font-family: var(--plevid-font-sans);
-    font-size: 10px;
+    font-size: var(--plevid-text-2xs);
     font-weight: var(--plevid-weight-medium);
     line-height: 1;
     letter-spacing: 0.14em;
@@ -167,7 +167,7 @@ width: 100%;
     max-width: 420px;
     text-align: center;
     font-family: var(--plevid-font-sans);
-    font-size: 10px;
+    font-size: var(--plevid-text-2xs);
     font-weight: var(--plevid-weight-medium);
     line-height: 1.4;
     letter-spacing: 0.14em;
@@ -491,10 +491,10 @@ width: 100%;
 
 }
 #page3 #left .igs{
-    background-image: url(https://selemen.liqium.com/img/j2.jpg);
+    background-image: url(/Homepage/hp14.png);
 }
 #page3 #right .igs{
-    background-image: url(https://selemen.liqium.com/img/j3.jpg);
+    background-image: url(/Homepage/hp17.png);
 }
 #page3 .over:hover .igs,
 #page3 .over.is-scroll-expanded .igs{
@@ -560,18 +560,18 @@ height: 100%;
     color: #ffffff;
 }
 #pt1{
-    background-image: url(https://selemen.liqium.com/img/b1.jpg);
+    background-image: url(/Homepage/hp5.jpg);
     z-index: 1;
     clip-path: polygon(0 100%, 100% 100%, 100% 0%, 0 0%);
 }
 #pt2{
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-    background-image: url(https://selemen.liqium.com/img/b2.jpg);
+    background-image: url(/Homepage/hp%2016.jpeg);
     z-index: 2;
 }
 #pt3{
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-    background-image: url(https://selemen.liqium.com/img/b3.jpg);
+    background-image: url(/Homepage/hp%2015.jpg);
     z-index: 3;
 }
 #page6{

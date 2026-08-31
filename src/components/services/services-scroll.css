@@ -1,5 +1,6 @@
 .svc {
-  --svc-accent: oklch(0.93 0.19 125);
+  --svc-accent: rgba(0, 0, 0, 0.45);
+  --svc-accent-strong: rgba(0, 0, 0, 0.72);
   --svc-muted: rgba(0, 0, 0, 0.42);
   --svc-line: rgba(0, 0, 0, 0.14);
   background: #ffffff;
@@ -306,4 +307,93 @@
   .svc-section-label::before {
     display: none;
   }
+}
+
+.svc-approach-steps {
+  padding: 0 24px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.svc-approach-steps__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 900px) {
+  .svc-approach-steps__grid {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+  }
+}
+
+.svc-approach-step {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--svc-line);
+  transition: border-color 0.35s ease, padding-left 0.35s var(--plevid-motion-ease);
+}
+
+.svc-approach-step:hover {
+  border-color: var(--plevid-accent-muted);
+  padding-left: 8px;
+}
+
+.svc-approach-step__num {
+  flex-shrink: 0;
+  font-size: var(--plevid-text-sm);
+  font-weight: var(--plevid-weight-bold);
+  color: var(--svc-muted);
+}
+
+.svc-approach-step__title {
+  margin: 0 0 8px;
+  font-size: var(--plevid-text-base);
+  font-weight: var(--plevid-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.svc-approach-step__text {
+  margin: 0;
+  font-size: var(--plevid-text-sm);
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.svc-approach-value {
+  padding: 16px 0;
+  border-top: 1px solid var(--svc-line);
+}
+
+.svc-approach-value__title {
+  margin: 0 0 8px;
+  font-size: var(--plevid-text-sm);
+  font-weight: var(--plevid-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.svc-approach-value__text {
+  margin: 0;
+  font-size: var(--plevid-text-sm);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.svc-approach-steps__footer {
+  margin: 48px 0 12px;
+  font-size: var(--plevid-text-lg);
+  font-weight: var(--plevid-weight-bold);
+  text-transform: lowercase;
+}
+
+.svc-approach-steps__keywords {
+  margin: 0;
+  font-size: var(--plevid-text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--svc-muted);
 }

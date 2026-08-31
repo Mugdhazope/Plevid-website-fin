@@ -1,13 +1,17 @@
 export const menuItems = [
   { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-  { label: 'About', ariaLabel: 'About Plevid', link: '/about' },
-  { label: 'Products', ariaLabel: 'View products', link: '/products' },
-  { label: 'Seasonal Edition', ariaLabel: 'View seasonal edition', link: '/seasonal-edition' },
-  { label: 'Seasonal Edition 2', ariaLabel: 'View seasonal edition catalogue', link: '/seasonal-edition-2' },
+  { label: 'About Plevid', ariaLabel: 'About Plevid', link: '/about' },
+  { label: 'Our Approach', ariaLabel: 'Our approach', link: '/services' },
   { label: 'Projects', ariaLabel: 'View projects', link: '/projects' },
-  { label: 'Services', ariaLabel: 'Our services', link: '/services' },
-  { label: 'Testimonials', ariaLabel: 'Client testimonials', link: '/testimonials' },
-  { label: 'Contact', ariaLabel: 'Contact us', link: '/contact' },
+  { label: 'Case Studies', ariaLabel: 'View case studies', link: '/case-studies' },
+  { label: 'Knowledge Hub', ariaLabel: 'Knowledge hub', link: '/knowledge-hub' },
+  { label: 'Experience Center', ariaLabel: 'Experience center', link: '/experience-center' },
+  { label: 'Careers', ariaLabel: 'Careers at Plevid', link: '/careers' },
+  { label: 'Contact Us', ariaLabel: 'Contact us', link: '/contact' },
+  { label: 'Seasonal Edition', ariaLabel: 'View seasonal edition catalogue', link: '/seasonal-edition' },
+  // { label: 'Products', ariaLabel: 'View products', link: '/products' },
+  // { label: 'Seasonal Edition', ariaLabel: 'View seasonal edition', link: '/seasonal-edition-v1' },
+  // { label: 'Testimonials', ariaLabel: 'Client testimonials', link: '/testimonials' },
 ];
 
 export const socialItems = [

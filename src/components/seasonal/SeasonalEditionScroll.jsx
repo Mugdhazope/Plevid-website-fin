@@ -138,7 +138,7 @@ export default function SeasonalEditionScroll() {
         {seasonalEditions.map((edition) => (
           <div
             key={edition.id}
-            className={`seasonal-edition__pane${edition.id === 'golden-hour' ? ' seasonal-edition__pane--horizontal' : ''}`}
+            className={`seasonal-edition__pane${edition.id === 'riviera-edition' ? ' seasonal-edition__pane--horizontal' : ''}`}
           >
             <div className="seasonal-edition__media">
               <img

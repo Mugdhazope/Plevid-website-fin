@@ -1,6 +1,7 @@
 import SiteMenu from '../components/SiteMenu.jsx';
 import Footer from '../components/Footer.jsx';
 import HeroLanding from '../components/HeroLanding.jsx';
+import { homepageImages } from '../data/homepageImages.js';
 
 export default function LandingPage() {
   return (
@@ -17,7 +18,7 @@ export default function LandingPage() {
         </div>
         <h2>Over 20 collections of curated lighting</h2>
         <h1>Elevating Spaces</h1>
-        <img src="https://selemen.liqium.com/img/j1.jpg" alt="" />
+        <img src={homepageImages.page2} alt="Architectural lighting installation" />
         <div id="line"></div>
       </div>
       <div id="page3">
@@ -91,9 +92,9 @@ export default function LandingPage() {
         </div>
       </div>
       <div id="page9">
-        <img id="ig91" data-scroll data-scroll-speed="5" src="https://selemen.liqium.com/img/lt1.jpg" alt="" />
-        <img id="ig92" data-scroll data-scroll-speed="4" src="https://selemen.liqium.com/img/lt2.jpg" alt="" />
-        <img id="ig93" data-scroll data-scroll-speed="4" src="https://selemen.liqium.com/img/lt3.jpg" alt="" />
+        <img id="ig91" data-scroll data-scroll-speed="5" src={homepageImages.page9.one} alt="" />
+        <img id="ig92" data-scroll data-scroll-speed="4" src={homepageImages.page9.two} alt="" />
+        <img id="ig93" data-scroll data-scroll-speed="4" src={homepageImages.page9.three} alt="" />
         <div>
           <div className="over"></div>
           <h1>Plevid®</h1>

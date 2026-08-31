@@ -3,6 +3,16 @@
   background-color: #ffffff;
   color: #000000;
   padding-top: 88px;
+  font-family: var(--plevid-font-sans);
+  font-size: var(--plevid-text-base);
+  line-height: var(--plevid-leading-body);
+}
+
+.plevid-page h1,
+.plevid-page h2,
+.plevid-page h3,
+.plevid-page h4 {
+  font-family: var(--plevid-font-sans);
 }
 
 .plevid-page-hero {
@@ -22,7 +32,7 @@
   font-family: var(--plevid-font-serif);
   font-style: italic;
   font-size: var(--plevid-text-lg);
-  color: oklch(0.93 0.19 125);
+  color: var(--plevid-accent);
   margin-bottom: 20px;
 }
 
@@ -30,7 +40,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: oklch(0.93 0.19 125);
+  background-color: var(--plevid-accent);
   flex-shrink: 0;
 }
 
@@ -91,7 +101,7 @@
 .plevid-section__eyebrow {
   font-family: var(--plevid-font-serif);
   font-style: italic;
-  color: oklch(0.93 0.19 125);
+  color: var(--plevid-accent);
   margin-bottom: 12px;
 }
 
@@ -148,7 +158,7 @@
 }
 
 .plevid-card__status--ongoing {
-  color: oklch(0.55 0.15 125);
+  color: var(--plevid-accent-hover);
 }
 
 .plevid-card__body {
@@ -182,7 +192,7 @@
   display: block;
   font-family: var(--plevid-font-serif);
   font-style: italic;
-  color: oklch(0.93 0.19 125);
+  color: var(--plevid-accent);
   margin-bottom: 16px;
 }
 
@@ -202,7 +212,7 @@
 
 .plevid-card__list li::before {
   content: '— ';
-  color: oklch(0.93 0.19 125);
+  color: var(--plevid-accent);
 }
 
 .plevid-card--service {
@@ -262,7 +272,7 @@
 }
 
 .plevid-contact__links a:hover {
-  color: oklch(0.55 0.15 125);
+  color: var(--plevid-accent-hover);
 }
 
 .plevid-contact__links span {
@@ -316,7 +326,7 @@
 
 .plevid-contact-form input:focus,
 .plevid-contact-form textarea:focus {
-  outline: 2px solid oklch(0.93 0.19 125);
+  outline: 2px solid var(--plevid-accent);
   outline-offset: 2px;
 }
 
@@ -368,4 +378,247 @@
   .plevid-contact-form__row {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.plevid-coming-soon-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px 24px;
+}
+
+.plevid-coming-soon {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: var(--plevid-text-2xs);
+  font-weight: var(--plevid-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.plevid-career-job {
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.plevid-career-job:first-child {
+  padding-top: 0;
+}
+
+.plevid-career-job__header {
+  margin-bottom: 32px;
+}
+
+.plevid-career-job__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .plevid-career-job__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.plevid-career-job__label {
+  margin: 0 0 12px;
+  font-size: var(--plevid-text-sm);
+  font-weight: var(--plevid-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.plevid-career-apply__address {
+  font-style: normal;
+}
+
+.plevid-contact-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 32px;
+}
+
+.plevid-contact-quick a,
+.plevid-contact-quick span {
+  font-size: var(--plevid-text-sm);
+  color: rgba(0, 0, 0, 0.72);
+  text-decoration: none;
+}
+
+.plevid-contact-quick a:hover {
+  color: var(--plevid-accent-hover);
+}
+
+.plevid-office-card .plevid-contact__address {
+  margin-bottom: 0;
+}
+
+.plevid-qr-grid {
+  gap: 24px;
+}
+
+.plevid-qr-placeholder {
+  text-align: center;
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.plevid-qr-placeholder__box {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.plevid-contact-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .plevid-contact-footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.plevid-card--interactive {
+  transition: transform 0.35s var(--plevid-motion-ease), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.plevid-card--interactive:hover,
+.plevid-card--interactive.is-highlighted {
+  transform: translateY(-4px);
+  border-color: var(--plevid-accent-muted);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.plevid-contact-quick a {
+  position: relative;
+  text-decoration: none;
+}
+
+.plevid-contact-quick a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--plevid-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--plevid-motion-ease);
+}
+
+.plevid-contact-quick a:hover::after {
+  transform: scaleX(1);
+}
+
+.plevid-link-accent {
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1px solid var(--plevid-accent);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.plevid-link-accent:hover {
+  color: var(--plevid-accent-hover);
+  border-color: var(--plevid-accent-hover);
+}
+
+.plevid-accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.plevid-accordion {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.plevid-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.plevid-accordion__title {
+  margin: 0;
+  font-family: var(--plevid-font-sans);
+  font-size: var(--plevid-text-xl);
+  font-weight: var(--plevid-weight-bold);
+  text-transform: lowercase;
+}
+
+.plevid-accordion__meta {
+  margin: 8px 0 0;
+  font-size: var(--plevid-text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.plevid-accordion__chevron {
+  flex-shrink: 0;
+  font-size: var(--plevid-text-2xl);
+  color: var(--plevid-accent);
+  line-height: 1;
+}
+
+.plevid-accordion__panel {
+  overflow: hidden;
+}
+
+.plevid-accordion__inner {
+  padding: 0 24px 24px;
+}
+
+.plevid-accordion.is-open {
+  border-color: var(--plevid-accent-muted);
+}
+
+.plevid-topic-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.plevid-topic-tabs__btn {
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: transparent;
+  font-family: var(--plevid-font-sans);
+  font-size: var(--plevid-text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.plevid-topic-tabs__btn.is-active,
+.plevid-topic-tabs__btn:hover {
+  border-color: var(--plevid-accent);
+  color: var(--plevid-accent-hover);
+  background: var(--plevid-accent-muted);
+}
+
+.plevid-section__callout {
+  padding: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 64px;
 }

@@ -3,7 +3,6 @@
   --seasonal-sub-bg: #f8fcff;
   --seasonal-text: rgba(0, 0, 0, 0.68);
   --seasonal-title: #000000;
-  --plevid-accent: oklch(0.93 0.19 125);
 
   position: relative;
   min-height: 100vh;

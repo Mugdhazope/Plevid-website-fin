@@ -1,0 +1,6 @@
+.plevid-reveal-line {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--plevid-accent);
+}

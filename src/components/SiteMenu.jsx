@@ -28,7 +28,7 @@ export default function SiteMenu() {
       openMenuButtonColor="#000000"
       changeMenuColorOnOpen={false}
       colors={['#ffffff', '#f5f5f5']}
-      accentColor="oklch(0.93 0.19 125)"
+      accentColor="var(--plevid-accent)"
       className="plevid-staggered-menu"
       onItemNavigate={handleNavigate}
     />

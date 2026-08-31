@@ -43,7 +43,7 @@ export default function Footer() {
 
         <div className="plevid-footer__bar">
           <img src="img/PLEVID.svg" alt="PLEVID" className="plevid-footer__logo" />
-          <div>Based in Mumbai · Lighting across India</div>
+          <div>Mumbai • Bangalore • Guwahati</div>
           <div>© {year} Plevid Group</div>
         </div>
       </div>

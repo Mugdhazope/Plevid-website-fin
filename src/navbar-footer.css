@@ -1,7 +1,6 @@
 :root {
   --plevid-bg: #000000;
   --plevid-fg: #ffffff;
-  --plevid-accent: oklch(0.93 0.19 125);
   --plevid-fg-85: rgba(255, 255, 255, 0.85);
   --plevid-fg-80: rgba(255, 255, 255, 0.8);
   --plevid-fg-60: rgba(255, 255, 255, 0.6);
@@ -37,6 +36,7 @@
 
 .plevid-staggered-menu .sm-panel-item {
   font-family: var(--plevid-font-sans);
+  font-size: clamp(2.4rem, 4.5vw, 3.25rem);
 }
 
 .plevid-staggered-menu--dark .sm-toggle {

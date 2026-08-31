@@ -1,68 +1,51 @@
+const seasonalBase = '/seasonal-edition';
+const seasonalImg = (filename) => `${seasonalBase}/${encodeURIComponent(filename)}`;
+
 export const seasonalCatalogue2 = [
   {
-    id: 'sabbia',
-    title: 'sabbia',
-    catalogueLabel: 'Warm sand neutrals',
-    letter: 'S',
+    id: 'bombay',
+    title: 'bombay edition',
+    catalogueLabel: 'South Mumbai luminosity',
+    letter: 'B',
     description:
-      'Earthy tones and soft metallics inspired by coastal stone — layered pendants and wall washes for calm, refined interiors.',
-    image: 'https://selemen.liqium.com/img/lt1.jpg',
-    pdfUrl: '#',
-  },
-  {
-    id: 'tropical',
-    title: 'tropical',
-    catalogueLabel: 'Lush ambient glow',
-    letter: 'T',
-    description:
-      'Rich ambers and diffused warmth for hospitality and residential spaces that invite slow evenings and open-air living.',
-    image: 'https://selemen.liqium.com/img/lt2.jpg',
-    pdfUrl: '#',
-  },
-  {
-    id: 'mediterranean',
-    title: 'mediterranean',
-    catalogueLabel: 'Coastal brass & stone',
-    letter: 'M',
-    description:
-      'Sun-bleached palettes with brushed brass accents — sculptural fixtures sourced from Italian ateliers for terraces and lobbies.',
-    image: 'https://selemen.liqium.com/img/j4.jpg',
-    pdfUrl: '#',
-  },
-  {
-    id: 'italian-garden',
-    title: 'italian garden',
-    catalogueLabel: 'Organic garden forms',
-    letter: 'I',
-    description:
-      'Garden-inspired silhouettes and natural textures that blur interior architecture with landscape — verdant, layered, timeless.',
-    image: 'https://selemen.liqium.com/img/lt3.jpg',
+      'Warm metropolitan glow and layered brass accents inspired by Bombay\'s skyline — sculptural fixtures for luxury residences, lobbies, and hospitality interiors.',
+    image: seasonalImg('Bombay edition.png'),
     pdfUrl: '#',
   },
   {
     id: 'nocturne',
-    title: 'nocturne',
+    title: 'nocturne edition',
     catalogueLabel: 'Evening indigo & brass',
     letter: 'N',
     description:
       'Deep blues and muted gold accents for after-dark atmospheres — low-glare pendants and wall washes that settle rooms into quiet luxury.',
-    image: 'https://selemen.liqium.com/img/j5.jpg',
+    image: seasonalImg('Nocturne Edition.png'),
     pdfUrl: '#',
   },
   {
-    id: 'porcelain',
-    title: 'porcelain',
-    catalogueLabel: 'Soft ceramic whites',
-    letter: 'P',
+    id: 'riviera',
+    title: 'riviera edition',
+    catalogueLabel: 'Coastal light & stone',
+    letter: 'R',
     description:
-      'Cool whites and blush ceramic finishes with diffused halos — sculptural pieces that feel architectural, airy, and quietly luminous.',
-    image: 'https://selemen.liqium.com/img/m6.jpg',
+      'Sun-bleached palettes with brushed brass and soft coastal warmth — curated fixtures for terraces, waterfront lounges, and open-air living.',
+    image: seasonalImg('Riviera Edition.png'),
+    pdfUrl: '#',
+  },
+  {
+    id: 'heritage',
+    title: 'heritage edition',
+    catalogueLabel: 'Timeless architectural craft',
+    letter: 'H',
+    description:
+      'Classic proportions and refined materials that honour architectural heritage — statement lighting for landmark interiors and enduring spaces.',
+    image: seasonalImg('Heritage Edition.png'),
     pdfUrl: '#',
   },
 ];
 
 export const seasonalCatalogue2Intro = {
-  label: 'seasonal edition 2',
+  label: 'seasonal edition',
   scrollHint: 'scroll',
   nextLabel: 'next',
 };

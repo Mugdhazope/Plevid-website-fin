@@ -1,0 +1,26 @@
+.plevid-cursor-halo {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    var(--plevid-accent-soft) 0%,
+    var(--plevid-accent-muted) 40%,
+    transparent 72%
+  );
+  filter: blur(64px);
+  mix-blend-mode: soft-light;
+  will-change: transform;
+  transition: opacity 0.6s ease;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .plevid-cursor-halo {
+    display: none;
+  }
+}

@@ -310,8 +310,13 @@ export default function OnScrollViewSwitch({ projects }) {
               </h2>
               <p className="osvs-item__caption-description">
                 {project.description}
-                {' '}
-                <span>{project.location} · {project.status}</span>
+                {project.client && (
+                  <span className="osvs-item__caption-credit">Client · {project.client}</span>
+                )}
+                {project.designer && (
+                  <span className="osvs-item__caption-credit">Designer · {project.designer}</span>
+                )}
+                <span className="osvs-item__caption-meta">{project.location} · {project.status}</span>
               </p>
             </figcaption>
             <div className="osvs-item__image-wrap">

@@ -6,7 +6,7 @@
   --osvs-color-switch: #000000;
   --osvs-color-switch-active: rgba(0, 0, 0, 0.28);
   --osvs-color-heading: #000000;
-  --osvs-color-accent: oklch(0.93 0.19 125);
+  --osvs-color-accent: var(--plevid-accent);
   --osvs-image-width: clamp(400px, 70vw, 680px);
   --osvs-image-height: clamp(300px, 35.5vw, 420px);
 
@@ -233,13 +233,20 @@ body.osvs-grid-open .osvs-content {
   color: var(--osvs-color-text);
 }
 
-.osvs-item__caption-description span {
+.osvs-item__caption-credit,
+.osvs-item__caption-meta {
   display: block;
   margin-top: 8px;
   font-size: var(--plevid-text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.osvs-item__caption-credit {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 .osvs-item__caption-number {

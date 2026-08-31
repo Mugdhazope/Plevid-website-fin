@@ -1,20 +1,4 @@
-const COL_LEFT = [
-  { src: 'https://selemen.liqium.com/img/m6.jpg', h: 'h-sm' },
-  { src: 'https://selemen.liqium.com/img/m2.jpg', h: 'h-lg' },
-  { src: 'https://selemen.liqium.com/img/m4.jpg', h: 'h-md' },
-  { src: 'https://selemen.liqium.com/img/m7.jpg', h: 'h-sm' },
-  { src: 'https://selemen.liqium.com/img/j1.jpg', h: 'h-xl' },
-  { src: 'https://selemen.liqium.com/img/m5.jpg', h: 'h-md' },
-];
-
-const COL_RIGHT = [
-  { src: 'https://selemen.liqium.com/img/m1.jpg', h: 'h-md' },
-  { src: 'https://selemen.liqium.com/img/m5.jpg', h: 'h-sm' },
-  { src: 'https://selemen.liqium.com/img/m3.jpg', h: 'h-lg' },
-  { src: 'https://selemen.liqium.com/img/j1.jpg', h: 'h-sm' },
-  { src: 'https://selemen.liqium.com/img/m6.jpg', h: 'h-md' },
-  { src: 'https://selemen.liqium.com/img/m2.jpg', h: 'h-xl' },
-];
+import { homepageHeroLeft, homepageHeroRight } from '../data/homepageImages.js';
 
 function RollColumn({ images, reverse }) {
   const track = [...images, ...images];
@@ -61,8 +45,8 @@ export default function HeroLanding() {
 
       <div className="page1-right">
         <div className="page1-roll-grid">
-          <RollColumn images={COL_LEFT} />
-          <RollColumn images={COL_RIGHT} reverse />
+          <RollColumn images={homepageHeroLeft} />
+          <RollColumn images={homepageHeroRight} reverse />
         </div>
       </div>
     </div>

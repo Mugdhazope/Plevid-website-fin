@@ -3,100 +3,23 @@ import {
   motion,
   useScroll,
   useTransform,
-  useReducedMotion,
 } from 'framer-motion';
 import { useLiteMotion } from '../../hooks/useLiteMotion.js';
+import Reveal from '../motion/Reveal.jsx';
+import RevealLine from '../motion/RevealLine.jsx';
+import RevealStagger from '../motion/RevealStagger.jsx';
+import CountUp from '../motion/CountUp.jsx';
+import JourneyTimeline from '../motion/JourneyTimeline.jsx';
 import {
   aboutImages,
-  aboutStatement,
-  aboutCopy,
-  aboutProcessSteps,
-  aboutWhyItems,
+  ceoMessage,
+  atAGlance,
+  whyPlevid,
+  globalPartnerships,
 } from '../../data/aboutPage.js';
 import './about-editorial.css';
 
 const EASE = [0.22, 1, 0.36, 1];
-
-function Reveal({ children, className, delay = 0, y = 30 }) {
-  const lite = useLiteMotion();
-
-  if (lite) {
-    return (
-      <motion.div
-        className={className}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.45, ease: 'easeOut', delay }}
-      >
-        {children}
-      </motion.div>
-    );
-  }
-
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.7, ease: EASE, delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function CursorLight() {
-  const ref = useRef(null);
-  const [active, setActive] = useState(false);
-  const SIZE = 560;
-  const HALF = SIZE / 2;
-
-  useEffect(() => {
-    if (window.matchMedia('(pointer: coarse)').matches) return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-
-    const el = ref.current;
-    if (!el) return undefined;
-
-    setActive(true);
-    let tx = window.innerWidth / 2;
-    let ty = window.innerHeight / 2;
-    let x = tx;
-    let y = ty;
-    let raf = 0;
-
-    const onMove = (e) => {
-      tx = e.clientX;
-      ty = e.clientY;
-    };
-
-    const tick = () => {
-      x += (tx - x) * 0.12;
-      y += (ty - y) * 0.12;
-      el.style.transform = `translate3d(${x - HALF}px, ${y - HALF}px, 0)`;
-      raf = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener('mousemove', onMove);
-    raf = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('mousemove', onMove);
-    };
-  }, [HALF]);
-
-  return (
-    <div
-      ref={ref}
-      aria-hidden
-      className="about__cursor-light"
-      style={{ opacity: active ? 0.5 : 0 }}
-    />
-  );
-}
 
 function HeroImage({
   src,
@@ -207,7 +130,7 @@ function HeroImages() {
       <div className="about__hero-stage">
         <HeroImage
           src={aboutImages.heroLeft}
-          alt="Architectural wall light"
+          alt="Plevid architectural lighting detail"
           caption=""
           className="about__hero-figure--left about__hero-figure--grayscale"
           glowClass="about__hero-glow--warm"
@@ -221,7 +144,7 @@ function HeroImages() {
         />
         <HeroImage
           src={aboutImages.heroCenter}
-          alt="Luxury lobby lighting installation"
+          alt="Ayuska by Avadh — architectural lighting"
           caption=""
           className="about__hero-figure--center"
           glowClass="about__hero-glow--accent"
@@ -235,7 +158,7 @@ function HeroImages() {
         />
         <HeroImage
           src={aboutImages.heroRight}
-          alt="Architectural spotlight detail"
+          alt="Plevid project lighting showcase"
           caption=""
           className="about__hero-figure--right"
           glowClass="about__hero-glow--gold"
@@ -258,7 +181,7 @@ function HeroImages() {
           willChange: 'transform',
         }}
       >
-        about us
+        about plevid
       </motion.h1>
     </section>
   );
@@ -270,7 +193,7 @@ function HeroLite() {
       <div className="about__hero-stage">
         <HeroImage
           src={aboutImages.heroLeft}
-          alt="Architectural wall light"
+          alt="Plevid architectural lighting detail"
           caption="Mumbai, India"
           className="about__hero-figure--left about__hero-figure--grayscale"
           glowClass=""
@@ -284,7 +207,7 @@ function HeroLite() {
         />
         <HeroImage
           src={aboutImages.heroCenter}
-          alt="Luxury lobby lighting installation"
+          alt="Ayuska by Avadh — architectural lighting"
           caption="Hospitality Project"
           className="about__hero-figure--center"
           glowClass=""
@@ -298,7 +221,7 @@ function HeroLite() {
         />
         <HeroImage
           src={aboutImages.heroRight}
-          alt="Architectural spotlight detail"
+          alt="Plevid project lighting showcase"
           caption="Custom Installation"
           className="about__hero-figure--right"
           glowClass=""
@@ -313,7 +236,7 @@ function HeroLite() {
         />
       </div>
 
-      <h1 className="about__hero-title">about us</h1>
+      <h1 className="about__hero-title">about plevid</h1>
     </section>
   );
 }
@@ -323,123 +246,164 @@ function Hero() {
   return lite ? <HeroLite /> : <HeroImages />;
 }
 
-function Word({ children, progress, index, total }) {
-  const start = index / total;
-  const end = (index + 1) / total;
-  const opacity = useTransform(progress, [start, end], [0.12, 1]);
-
-  return (
-    <motion.span style={{ opacity }} className="about__statement-word">
-      {children}
-    </motion.span>
-  );
-}
-
-function RevealStatementFull({ text }) {
+function CeoMessageSection() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'start 0.25'] });
-  const words = text.split(' ');
-
-  return (
-    <h2 ref={ref} className="about__statement">
-      {words.map((word, i) => (
-        <Word key={word + i} progress={scrollYProgress} index={i} total={words.length}>
-          {word}
-        </Word>
-      ))}
-    </h2>
-  );
-}
-
-function RevealStatement({ text }) {
   const lite = useLiteMotion();
-  if (lite) {
-    return (
-      <Reveal>
-        <h2 className="about__statement">{text}</h2>
-      </Reveal>
-    );
-  }
-  return <RevealStatementFull text={text} />;
-}
-
-function ProcessTimeline() {
-  const ref = useRef(null);
-  const pathRef = useRef(null);
-  const reduce = useReducedMotion();
-  const [length, setLength] = useState(0);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.8', 'end 0.2'] });
-  const offset = useTransform(scrollYProgress, [0, 1], [length, 0]);
-
-  useEffect(() => {
-    if (pathRef.current) setLength(pathRef.current.getTotalLength());
-  }, []);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const imageY = useTransform(scrollYProgress, [0, 1], [lite ? 0 : 30, lite ? 0 : -30]);
 
   return (
-    <section id="process" className="about__process">
+    <section id="ceo-message" className="about__ceo" ref={ref}>
       <Reveal className="about__section-eyebrow about__serif">
         <span className="about__section-eyebrow-dot" />
-        process.
+        {ceoMessage.eyebrow}
       </Reveal>
 
-      <div className="about__process-mobile">
-        {aboutProcessSteps.map((step) => (
-          <Reveal key={step.n}>
-            <div className="about__process-mobile-item">
-              <span className="about__process-mobile-dot" />
-              <div className={`about__process-num about__serif`}>{step.n}.</div>
-              <h3 className="about__process-title">{step.title}</h3>
-              <p className="about__process-text">{step.text}</p>
-            </div>
+      <div className="about__ceo-grid">
+        <div className="about__ceo-copy">
+          <Reveal>
+            <h2 className="about__ceo-title about__section-display">{ceoMessage.title}</h2>
           </Reveal>
-        ))}
-      </div>
-
-      <div ref={ref} className="about__process-desktop">
-        <svg
-          className="about__process-path"
-          viewBox="0 0 1000 1700"
-          preserveAspectRatio="none"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.2"
-        >
-          <motion.path
-            ref={pathRef}
-            d="M 500 0 C 520 80, 540 140, 480 200 C 400 280, 600 340, 560 420 C 520 500, 380 520, 360 600 C 340 700, 600 720, 600 820 C 600 920, 360 940, 360 1040 C 360 1140, 620 1160, 580 1260 C 540 1360, 360 1380, 380 1480 C 400 1560, 540 1600, 520 1700"
-            style={
-              reduce || length === 0
-                ? undefined
-                : { strokeDasharray: length, strokeDashoffset: offset }
-            }
+          <Reveal className="about__ceo-body">
+            {ceoMessage.paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            ))}
+          </Reveal>
+          <Reveal className="about__ceo-signature">
+            <RevealLine className="about__ceo-signature-line" />
+            <p className="about__ceo-signature-name">{ceoMessage.signature.name}</p>
+            <p className="about__ceo-signature-role">{ceoMessage.signature.role}</p>
+          </Reveal>
+        </div>
+        <Reveal className="about__ceo-media" delay={0.1}>
+          <motion.img
+            style={{ y: imageY }}
+            src={aboutImages.ceoMessage}
+            alt="Architectural lighting at night"
+            loading="lazy"
           />
-        </svg>
-
-        {aboutProcessSteps.map((step) => (
-          <motion.div
-            key={step.n}
-            className={`about__process-step about__process-step--${step.side}`}
-            style={{ top: step.top }}
-            initial={reduce ? false : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.5, ease: EASE }}
-          >
-            <div className={`about__process-num about__serif`}>{step.n}.</div>
-            <div className="about__process-step-head">
-              <motion.span
-                className="about__process-step-dot"
-                initial={reduce ? false : { opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.4, ease: EASE, delay: 0.1 }}
-              />
-              <h3 className="about__process-title">{step.title}</h3>
-            </div>
-            <p className="about__process-text">{step.text}</p>
-          </motion.div>
-        ))}
+        </Reveal>
       </div>
+    </section>
+  );
+}
+
+function AtAGlanceSection() {
+  return (
+    <section id="at-a-glance" className="about__glance">
+      <Reveal className="about__section-eyebrow about__serif">
+        <span className="about__section-eyebrow-dot" />
+        {atAGlance.eyebrow}
+      </Reveal>
+      <Reveal>
+        <h2 className="about__glance-title about__section-display">{atAGlance.title}</h2>
+      </Reveal>
+      <Reveal className="about__glance-intro">
+        <p>{atAGlance.intro}</p>
+      </Reveal>
+
+      <div className="about__glance-layout">
+        <div className="about__glance-facts">
+          {atAGlance.facts.map((fact, i) => (
+            <Reveal key={fact.label} delay={i * 0.06}>
+              <div className="about__glance-fact">
+                <div className="about__glance-fact-line" />
+                <p className="about__glance-fact-label">{fact.label}</p>
+                <p className="about__glance-fact-value">{fact.value}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <RevealStagger className="about__glance-projects" stagger={0.06}>
+          {atAGlance.projects.map((item) => (
+            <div key={item.city + item.project} className="about__glance-project">
+              <span className="about__glance-project-city">{item.city}</span>
+              <span className="about__glance-project-name">{item.project}</span>
+            </div>
+          ))}
+        </RevealStagger>
+      </div>
+
+      <RevealStagger className="about__glance-stats" stagger={0.08}>
+        {atAGlance.stats.map((stat) => (
+          <div key={stat.label} className="about__glance-stat">
+            <p className="about__glance-stat-value">
+              <CountUp value={stat.value} />
+            </p>
+            <p className="about__glance-stat-label">{stat.label}</p>
+            <p className="about__glance-stat-detail">{stat.detail}</p>
+          </div>
+        ))}
+      </RevealStagger>
+    </section>
+  );
+}
+
+function WhyPlevidSection() {
+  return (
+    <section id="why-plevid" className="about__why">
+      <Reveal>
+        <h2 className="about__why-title about__section-display">{whyPlevid.title}</h2>
+      </Reveal>
+
+      <div className="about__why-layout">
+        <Reveal className="about__why-copy">
+          {whyPlevid.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))}
+        </Reveal>
+
+        <RevealStagger className="about__why-grid" stagger={0.08}>
+          {whyPlevid.pillars.map((item) => (
+            <div key={item.title} className="about__why-item">
+              <h3 className="about__why-item-title">{item.title}</h3>
+              <p className="about__why-item-text">{item.text}</p>
+            </div>
+          ))}
+        </RevealStagger>
+      </div>
+
+      <Reveal className="about__why-footer">
+        <p>{whyPlevid.footer}</p>
+      </Reveal>
+    </section>
+  );
+}
+
+function GlobalPartnershipsSection() {
+  return (
+    <section id="global-partnerships" className="about__partners">
+      <Reveal className="about__section-eyebrow about__serif">
+        <span className="about__section-eyebrow-dot" />
+        {globalPartnerships.eyebrow}
+      </Reveal>
+      <Reveal>
+        <h2 className="about__partners-title about__section-display">{globalPartnerships.title}</h2>
+      </Reveal>
+      <Reveal className="about__partners-intro">
+        <p>{globalPartnerships.intro}</p>
+      </Reveal>
+
+      <RevealStagger className="about__partners-grid" stagger={0.1}>
+        {globalPartnerships.partners.map((partner) => (
+          <article key={partner.name} className="about__partner-card">
+            <div className="about__partner-head">
+              <h3 className="about__partner-name">{partner.name}</h3>
+              <span className="about__partner-country">{partner.country}</span>
+            </div>
+            <p className="about__partner-desc">{partner.description}</p>
+            <p className="about__partner-apps">
+              <strong>Core Applications:</strong> {partner.applications}
+            </p>
+          </article>
+        ))}
+      </RevealStagger>
+
+      <Reveal className="about__partners-footer">
+        <p className="about__partners-locations">{globalPartnerships.locations}</p>
+        <p className="about__partners-tagline">{globalPartnerships.footer}</p>
+      </Reveal>
     </section>
   );
 }
@@ -449,69 +413,12 @@ export default function AboutEditorial() {
 
   return (
     <div className={`about${lite ? ' lite-motion' : ''}`}>
-      {!lite && <CursorLight />}
       <Hero />
-
-      <section className="about__intro">
-        <Reveal>
-          <div className="about__intro-marker">
-            <div className="about__intro-plus">+</div>
-            <div className="about__intro-line" />
-            <p className="about__intro-location">
-              Based in Mumbai.
-              <br />
-              Lighting across India.
-            </p>
-          </div>
-        </Reveal>
-
-        <RevealStatement text={aboutStatement} />
-
-        <Reveal className="about__intro-copy">
-          <div className="about__intro-copy-inner">
-            {aboutCopy.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
-      <ProcessTimeline />
-
-      <section id="why" className="about__why">
-        <Reveal>
-          <h2 className="about__why-title">why plevid.</h2>
-        </Reveal>
-
-        <div className="about__why-grid">
-          {aboutWhyItems.map((item, i) => (
-            <Reveal key={item.n} delay={i * 0.08}>
-              <div className="about__why-item">
-                <div className={`about__why-item-num about__serif`}>{item.n}</div>
-                <h3 className="about__why-item-title">{item.title}</h3>
-                <p className="about__why-item-text">{item.text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="about__manifesto">
-        <Reveal y={24}>
-          <h2 className="about__manifesto-line">
-            we don&apos;t
-            <br />
-            sell lights.
-          </h2>
-        </Reveal>
-        <Reveal y={24}>
-          <h2 className="about__manifesto-line about__manifesto-line--muted">
-            we shape
-            <br />
-            <span className="about__manifesto-accent">experiences.</span>
-          </h2>
-        </Reveal>
-      </section>
+      <CeoMessageSection />
+      <AtAGlanceSection />
+      <JourneyTimeline />
+      <WhyPlevidSection />
+      <GlobalPartnershipsSection />
     </div>
   );
 }

@@ -2,7 +2,7 @@
   --t-card-width: min(340px, calc(100vw - 160px));
   --t-card-height: 220px;
   --t-transition: 750ms;
-  --t-accent: oklch(0.93 0.19 125);
+  --t-accent: var(--plevid-accent);
 
   position: relative;
   padding: 48px 16px 96px;
@@ -141,7 +141,7 @@
 .t-carousel__nav:focus-visible {
   opacity: 1;
   transform: scale(1.08);
-  background: rgba(200, 255, 77, 0.4);
+  background: var(--plevid-accent-muted);
   border-color: #000000;
   outline: none;
 }

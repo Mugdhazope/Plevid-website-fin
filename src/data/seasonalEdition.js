@@ -1,12 +1,15 @@
+const seasonalBase = '/seasonal-edition';
+const seasonalImg = (filename) => `${seasonalBase}/${encodeURIComponent(filename)}`;
+
 export const seasonalEditions = [
   {
-    id: 'luminous-winter',
-    title: 'luminous winter',
+    id: 'bombay-edition',
+    title: 'bombay edition',
     description:
-      'Soft, layered illumination for the colder months — warm metallics, diffused glow, and sculptural pendants curated from Italian ateliers.',
+      'Warm metropolitan glow and layered brass accents inspired by Bombay\'s skyline — sculptural fixtures for luxury residences, lobbies, and hospitality interiors.',
     aside:
-      'A limited release of fixtures designed to bring depth and warmth to residential and hospitality interiors.',
-    image: 'https://selemen.liqium.com/img/lt1.jpg',
+      'A curated release of fixtures shaped by South Mumbai\'s architectural rhythm and evening light.',
+    image: seasonalImg('Bombay edition.png'),
     pdfUrl: '#',
     theme: {
       mainBg: '#e8f4fc',
@@ -16,13 +19,29 @@ export const seasonalEditions = [
     },
   },
   {
-    id: 'golden-hour',
-    title: 'golden hour',
+    id: 'nocturne-edition',
+    title: 'nocturne edition',
     description:
-      'Amber tones and brushed brass accents define this summer release — statement pieces for terraces, lobbies, and dining rooms.',
+      'Deep blues and muted gold accents for after-dark atmospheres — low-glare pendants and wall washes that settle rooms into quiet luxury.',
     aside:
       'Seasonal finishes and bespoke configurations available for select collections through Plevid.',
-    image: 'https://selemen.liqium.com/img/lt2.jpg',
+    image: seasonalImg('Nocturne Edition.png'),
+    pdfUrl: '#',
+    theme: {
+      mainBg: '#1a1f3a',
+      subBg: '#252b4a',
+      text: '#e8eaf5',
+      title: '#c9b896',
+    },
+  },
+  {
+    id: 'riviera-edition',
+    title: 'riviera edition',
+    description:
+      'Sun-bleached palettes with brushed brass and soft coastal warmth — curated fixtures for terraces, waterfront lounges, and open-air living.',
+    aside:
+      'Each piece is sourced for its craft, proportion, and ability to shape mood across the changing seasons.',
+    image: seasonalImg('Riviera Edition.png'),
     pdfUrl: '#',
     theme: {
       mainBg: '#fff3c4',
@@ -32,19 +51,19 @@ export const seasonalEditions = [
     },
   },
   {
-    id: 'verdant-light',
-    title: 'verdant light',
+    id: 'heritage-edition',
+    title: 'heritage edition',
     description:
-      'Organic forms and garden-inspired silhouettes for spaces that blur the line between interior architecture and nature.',
+      'Classic proportions and refined materials that honour architectural heritage — statement lighting for landmark interiors and enduring spaces.',
     aside:
-      'Each piece is sourced for its craft, proportion, and ability to shape mood across the changing seasons.',
-    image: 'https://selemen.liqium.com/img/lt3.jpg',
+      'Organic forms and timeless silhouettes for spaces that balance tradition with contemporary refinement.',
+    image: seasonalImg('Heritage Edition.png'),
     pdfUrl: '#',
     theme: {
-      mainBg: '#e8f5e4',
-      subBg: '#f6fbf4',
-      text: '#1a3d2e',
-      title: 'oklch(0.55 0.15 125)',
+      mainBg: '#f0ebe3',
+      subBg: '#faf7f2',
+      text: '#3d3428',
+      title: '#8b7355',
     },
   },
 ];
@@ -52,7 +71,7 @@ export const seasonalEditions = [
 export const seasonalIntro = {
   label: 'seasonal edition',
   lead:
-    'Three curated releases across the year — each collection reimagines Plevid lighting through a distinct palette, material story, and spatial mood.',
+    'Four curated releases across the year — each collection reimagines Plevid lighting through a distinct palette, material story, and spatial mood.',
   footnote:
     'Scroll horizontally to explore each edition. Themes transition as you move through the collection.',
 };

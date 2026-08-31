@@ -1,0 +1,116 @@
+.svc-diff {
+  padding: 80px 24px 96px;
+  background: #fafafa;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.svc-diff__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.svc-diff__list {
+  margin-top: 48px;
+}
+
+.svc-diff__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.svc-diff__row:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.svc-diff__row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .svc-diff__row {
+    grid-template-columns: minmax(80px, 140px) 1fr;
+    gap: 48px;
+    align-items: start;
+    padding: 56px 0;
+  }
+}
+
+.svc-diff__number {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: var(--plevid-weight-black);
+  line-height: 0.9;
+  letter-spacing: var(--plevid-tracking-tighter);
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.svc-diff__content {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .svc-diff__content {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+}
+
+.svc-diff__title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: var(--plevid-weight-bold);
+  line-height: var(--plevid-leading-heading);
+  letter-spacing: var(--plevid-tracking-heading);
+  text-transform: lowercase;
+  color: #000000;
+  transition: color 0.25s ease;
+}
+
+.svc-diff__row:hover .svc-diff__title {
+  color: var(--svc-accent-strong, rgba(0, 0, 0, 0.72));
+}
+
+.svc-diff__dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: 0.45em;
+  border-radius: 50%;
+  background: var(--svc-accent, rgba(0, 0, 0, 0.45));
+}
+
+.svc-diff__desc {
+  margin: 0;
+  font-family: var(--plevid-font-serif);
+  font-style: italic;
+  font-size: var(--plevid-text-base);
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+@media (max-width: 767px) {
+  .svc-diff {
+    padding: 64px 24px 72px;
+  }
+
+  .svc-diff__row {
+    padding: 32px 0;
+  }
+
+  .svc-diff__number {
+    font-size: clamp(40px, 12vw, 64px);
+  }
+}
