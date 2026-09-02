@@ -622,3 +622,51 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 64px;
 }
+
+@media (max-width: 767px) {
+  .plevid-page {
+    padding-top: 72px;
+  }
+
+  .plevid-page-hero {
+    padding: 32px 20px 48px;
+  }
+
+  .plevid-page-hero__title {
+    max-width: none;
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  .plevid-section {
+    padding: 48px 20px 64px;
+  }
+
+  .plevid-section__callout {
+    padding: 24px 20px;
+    margin-top: 40px;
+  }
+
+  .plevid-contact-form input,
+  .plevid-contact-form textarea,
+  .plevid-contact-form select {
+    width: 100%;
+  }
+
+  .plevid-accordion__trigger {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .plevid-accordion__inner {
+    padding: 0 16px 20px;
+  }
+
+  .plevid-topic-tabs {
+    gap: 6px;
+  }
+
+  .plevid-topic-tabs__btn {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+}

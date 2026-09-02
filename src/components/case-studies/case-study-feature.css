@@ -293,6 +293,16 @@
 }
 
 @media (max-width: 599px) {
+  .case-study-feature {
+    padding: 48px 0;
+    gap: 32px;
+  }
+
+  .case-study-feature__title {
+    max-width: none;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
   .case-study-feature__facts {
     grid-template-columns: 1fr;
   }
@@ -300,5 +310,14 @@
   .case-study-feature__detail {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .case-study-feature__slider-dots {
+    max-height: 48px;
+    overflow-y: auto;
+  }
+
+  .case-study-feature__slider-nav {
+    gap: 12px;
   }
 }

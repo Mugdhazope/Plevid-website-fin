@@ -56,9 +56,16 @@ export default function OnScrollViewSwitch({ projects }) {
     let lenis = null;
     let rafId = null;
     let createdTriggers = [];
+    let isGridOpen = false;
+
+    const isMobileViewport = () => window.innerWidth < 768;
 
     const captureNewTriggers = (countBefore) => {
       createdTriggers = ScrollTrigger.getAll().slice(countBefore);
+    };
+
+    const refreshScrollTriggers = () => {
+      ScrollTrigger.refresh();
     };
 
     const initSmoothScrolling = () => {
@@ -120,6 +127,9 @@ export default function OnScrollViewSwitch({ projects }) {
         ease: 'none',
         x: () => {
           const windowWidth = window.innerWidth;
+          if (windowWidth < 768) {
+            return 0;
+          }
           return -heading.main.offsetWidth - (13.25 * windowWidth / 100 + 25 * windowWidth / 100 + windowWidth / 100) + windowWidth;
         },
       });
@@ -128,7 +138,10 @@ export default function OnScrollViewSwitch({ projects }) {
     };
 
     const showGrid = () => {
+      if (isMobileViewport()) return;
+
       document.body.classList.add('osvs-grid-open');
+      isGridOpen = true;
       lenis?.stop();
 
       const DOM = getDOMElements(items);
@@ -185,7 +198,10 @@ export default function OnScrollViewSwitch({ projects }) {
     };
 
     const hideGrid = () => {
+      if (!isGridOpen) return;
+
       document.body.classList.remove('osvs-grid-open');
+      isGridOpen = false;
       lenis?.start();
 
       const DOM = getDOMElements(items);
@@ -220,6 +236,8 @@ export default function OnScrollViewSwitch({ projects }) {
     };
 
     const onShowGrid = () => {
+      if (isMobileViewport()) return;
+
       switchCtrl.grid.classList.add('osvs-switch__button--current');
       switchCtrl.list.classList.remove('osvs-switch__button--current');
       showGrid();
@@ -229,6 +247,13 @@ export default function OnScrollViewSwitch({ projects }) {
       switchCtrl.list.classList.add('osvs-switch__button--current');
       switchCtrl.grid.classList.remove('osvs-switch__button--current');
       hideGrid();
+    };
+
+    const onResize = () => {
+      if (isMobileViewport() && isGridOpen) {
+        onHideGrid();
+      }
+      refreshScrollTriggers();
     };
 
     let cancelled = false;
@@ -243,14 +268,17 @@ export default function OnScrollViewSwitch({ projects }) {
 
       switchCtrl.grid?.addEventListener('click', onShowGrid);
       switchCtrl.list?.addEventListener('click', onHideGrid);
+      window.addEventListener('resize', onResize);
     });
 
     return () => {
       cancelled = true;
       document.body.classList.remove('osvs-grid-open');
+      isGridOpen = false;
 
       switchCtrl.grid?.removeEventListener('click', onShowGrid);
       switchCtrl.list?.removeEventListener('click', onHideGrid);
+      window.removeEventListener('resize', onResize);
 
       if (rafId) cancelAnimationFrame(rafId);
       lenis?.destroy();

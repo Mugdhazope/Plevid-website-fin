@@ -288,8 +288,22 @@
 
 @media (max-width: 768px) {
   .se2 {
-    --se2-active-width: 78vw;
-    --se2-inactive-width: 6vw;
+    --se2-active-width: 88vw;
+    --se2-inactive-width: 4vw;
+    --se2-stage-height: 68vh;
+    --se2-catalogue-height: auto;
+  }
+
+  .se2-panel__overlay {
+    padding: 24px 20px;
+  }
+
+  .se2-panel__title {
+    font-size: clamp(1.75rem, 7vw, 3rem);
+  }
+
+  .se2-panel__letter {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
   }
 
   .se2-catalogue {
@@ -297,9 +311,10 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 0;
-    padding-bottom: 72px;
+    padding: 0 16px 72px;
     align-items: center;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
 
@@ -310,10 +325,19 @@
   .se2-catalogue__item {
     flex: 0 0 auto;
     padding: 16px 12px;
+    scroll-snap-align: start;
+  }
+
+  .se2-catalogue__word {
+    white-space: normal;
   }
 
   .se2-scroll-hint,
   .se2-next {
     bottom: 16px;
+  }
+
+  .se2-scroll-hint {
+    display: none;
   }
 }

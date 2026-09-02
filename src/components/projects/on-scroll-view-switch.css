@@ -7,8 +7,8 @@
   --osvs-color-switch-active: rgba(0, 0, 0, 0.28);
   --osvs-color-heading: #000000;
   --osvs-color-accent: var(--plevid-accent);
-  --osvs-image-width: clamp(400px, 70vw, 680px);
-  --osvs-image-height: clamp(300px, 35.5vw, 420px);
+  --osvs-image-width: clamp(280px, 92vw, 680px);
+  --osvs-image-height: clamp(210px, 69vw, 420px);
 
   min-height: 100vh;
   color: var(--osvs-color-text);
@@ -357,5 +357,52 @@ body.osvs-grid-open .osvs-grid {
 
   .osvs-heading {
     top: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .osvs-heading {
+    top: 5rem;
+  }
+
+  .osvs-heading__main {
+    white-space: normal;
+    margin-left: 6vw;
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+    line-height: 1.1;
+  }
+
+  .osvs-heading__sub {
+    display: block;
+    margin-left: 6vw;
+    margin-top: 4px;
+  }
+
+  .osvs-content {
+    padding: 16vh 6vw 2.5rem;
+  }
+
+  .osvs-item__caption-description {
+    max-width: 100%;
+  }
+
+  .osvs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.75rem;
+    padding: 1rem;
+    overflow-y: auto;
+    align-content: start;
+    padding-top: 6rem;
+  }
+
+  .osvs-grid .osvs-item__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .osvs-grid .osvs-item__image:nth-child(n) {
+    grid-row: auto;
+    grid-column: auto;
   }
 }

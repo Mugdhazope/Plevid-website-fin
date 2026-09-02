@@ -150,6 +150,26 @@
   text-align: center;
 }
 
+@media (max-width: 767px) {
+  .plevid-footer {
+    padding: 56px 20px 32px;
+  }
+
+  .plevid-footer__title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    word-break: break-word;
+  }
+
+  .plevid-footer__grid {
+    margin-top: 48px;
+    gap: 32px;
+  }
+
+  .plevid-footer__bar {
+    margin-top: 48px;
+  }
+}
+
 .plevid-footer__logo {
   height: 16px;
   width: auto;

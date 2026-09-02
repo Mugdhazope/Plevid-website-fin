@@ -17,7 +17,7 @@ width: 100%;
 }
 #main{
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 #page1{
     position: relative;
@@ -1080,4 +1080,205 @@ height: 100%;
 }
 span{
     display: inline-block;
+}
+
+@media (max-width: 767px) {
+    #page2 {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 24px 64px;
+    }
+
+    #page2 #down {
+        position: relative;
+        top: auto;
+        height: auto;
+        padding: 0 0 32px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    #down #line1,
+    #down #line2 {
+        display: none;
+    }
+
+    #page2 h2 {
+        font-size: clamp(1.25rem, 5vw, 1.75rem);
+        text-align: center;
+        padding: 0 8px;
+    }
+
+    #page2 h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+        margin-bottom: 32px;
+        text-align: center;
+        padding: 0 8px;
+    }
+
+    #page2 img {
+        position: relative;
+        bottom: auto;
+        height: auto;
+        width: min(92vw, 480px);
+        max-height: 40vh;
+        object-fit: cover;
+        margin-top: 24px;
+    }
+
+    #page2 #line {
+        display: none;
+    }
+
+    #page3 {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+    }
+
+    #page3 #left,
+    #page3 #right {
+        width: 100%;
+        height: 50vh;
+        min-height: 320px;
+    }
+
+    #line3-vt {
+        display: none;
+    }
+
+    .line3 {
+        width: calc(100% - 48px);
+    }
+
+    #page3 .igs {
+        width: 80%;
+        height: 70%;
+    }
+
+    #page4 {
+        height: auto;
+        min-height: 60vh;
+        padding: 64px 24px;
+    }
+
+    #page4 div {
+        width: min(90vw, 480px);
+        margin-top: 0;
+    }
+
+    #page5 {
+        height: 100vh;
+        min-height: 480px;
+    }
+
+    .pt {
+        padding: 0 24px;
+    }
+
+    .pt h1 {
+        font-size: clamp(2rem, 9vw, 3.5rem);
+    }
+
+    .pt p {
+        font-size: var(--plevid-text-sm);
+        max-width: 32ch;
+    }
+
+    #page6 {
+        padding: 0 24px 48px;
+    }
+
+    #elem3 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-top: 32px;
+    }
+
+    #elem3 h4 {
+        font-size: clamp(1.5rem, 7vw, 2.25rem);
+    }
+
+    #para {
+        width: 100%;
+        margin-top: 32px;
+    }
+
+    #para p {
+        font-size: var(--plevid-text-base);
+    }
+
+    #linee {
+        display: none;
+    }
+
+    #page7 {
+        height: 50vh;
+        min-height: 200px;
+        overflow-x: hidden;
+    }
+
+    #page8 {
+        height: 60vh;
+        min-height: 280px;
+        margin-bottom: 32px;
+    }
+
+    #page9 {
+        padding: 48px 24px 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #page9 h1 {
+        font-size: clamp(2rem, 11vw, 3.5rem);
+        position: relative;
+        z-index: 2;
+    }
+
+    #page9 .over {
+        display: none;
+    }
+
+    #page9 div {
+        position: relative;
+        overflow: visible;
+        padding-bottom: 8px;
+    }
+
+    #page9 #ig91,
+    #page9 #ig92,
+    #page9 #ig93 {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        max-width: 280px;
+        margin: 24px auto 0;
+        display: block;
+        mix-blend-mode: normal;
+    }
+
+    #page9 #ig91 {
+        order: 10;
+    }
+
+    #page9 #ig92 {
+        order: 11;
+        max-width: 320px;
+    }
+
+    #page9 #ig93 {
+        order: 12;
+        max-width: 240px;
+    }
+
+    #page12 {
+        padding: 48px 24px 0;
+    }
 }

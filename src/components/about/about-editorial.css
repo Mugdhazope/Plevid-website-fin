@@ -1073,3 +1073,33 @@
     animation: none;
   }
 }
+
+@media (max-width: 639px) {
+  .about__hero {
+    padding-top: 96px;
+    padding-bottom: 16px;
+  }
+
+  .about__hero-stage {
+    height: auto;
+    min-height: 280px;
+  }
+
+  .about__hero-figure--left,
+  .about__hero-figure--right {
+    display: none;
+  }
+
+  .about__hero-figure--center {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(92vw, 360px);
+    margin: 0 auto;
+  }
+
+  .about__hero-title {
+    margin-top: -24px;
+    font-size: clamp(48px, 18vw, 96px);
+  }
+}
