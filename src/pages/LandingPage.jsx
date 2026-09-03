@@ -29,7 +29,10 @@ export default function LandingPage() {
           <h3>01</h3>
           <h4>Combining craftsmanship and modern design to illuminate spaces</h4>
           <div className="over">
-            <div className="igs">
+            <div
+              className="igs"
+              style={{ backgroundImage: `url(${homepageImages.page3.residential})` }}
+            >
               <h5>Residential</h5>
               <h2>Lighting</h2>
             </div>
@@ -39,7 +42,10 @@ export default function LandingPage() {
           <h3>02</h3>
           <h4>Creating immersive experiences with premium lighting solutions</h4>
           <div className="over">
-            <div className="igs">
+            <div
+              className="igs"
+              style={{ backgroundImage: `url(${homepageImages.page3.commercial})` }}
+            >
               <h5>Commercial</h5>
               <h2>Installations</h2>
             </div>
@@ -48,23 +54,52 @@ export default function LandingPage() {
       </div>
       <div id="page4">
         <div>
-          <img src="https://selemen.liqium.com/img/80r.svg" alt="" />
+          <div className="over"></div>
+          <h1>Plevid®</h1>
+        </div>
+        <div>
+          <div className="over"></div>
+          <h1>turns vision</h1>
+        </div>
+        <div>
+          <div className="over"></div>
+          <h1>into atmosphere</h1>
+        </div>
+        <div>
+          <div className="over"></div>
+          <h1>through light</h1>
+        </div>
+        <div>
+          <div className="over"></div>
+          <h1>crafted with care</h1>
         </div>
       </div>
       <div id="page5">
-        <div id="pt1" className="pt">
+        <div
+          id="pt1"
+          className="pt"
+          style={{ backgroundImage: `url(${homepageImages.page5.collection1})` }}
+        >
           <div className="textt">
             <h1>Signature Collection #1</h1>
             <p>Elegant fixtures that transform interiors into works of art.</p>
           </div>
         </div>
-        <div id="pt2" className="pt">
+        <div
+          id="pt2"
+          className="pt"
+          style={{ backgroundImage: `url(${homepageImages.page5.collection2})` }}
+        >
           <div className="textt">
             <h1>Illumination of Light</h1>
             <p>Custom designs tailored for luxury homes and projects.</p>
           </div>
         </div>
-        <div id="pt3" className="pt">
+        <div
+          id="pt3"
+          className="pt"
+          style={{ backgroundImage: `url(${homepageImages.page5.collection3})` }}
+        >
           <div className="textt">
             <h1>Modern Classics</h1>
             <p>Timeless lighting pieces crafted with precision and care.</p>

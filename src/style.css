@@ -179,7 +179,7 @@ width: 100%;
     width: 40%;
     height: 100%;
     flex-shrink: 0;
-    border-left: 10px solid #000000;
+    border-left: 3px solid #000000;
     background-color: #ffffff;
     overflow: hidden;
 }
@@ -194,7 +194,7 @@ width: 100%;
     width: 50%;
     height: 100%;
     overflow: hidden;
-    border-left: 10px solid #000000;
+    border-left: 3px solid #000000;
 }
 
 .page1-roll-col:first-child{
@@ -215,7 +215,7 @@ width: 100%;
 .page1-roll-item{
     width: 100%;
     flex-shrink: 0;
-    border-bottom: 2px solid #000000;
+    border-bottom: 1px solid #000000;
     overflow: hidden;
 }
 
@@ -281,7 +281,7 @@ width: 100%;
         width: 100%;
         height: 38vh;
         border-left: none;
-        border-top: 2px solid #000000;
+        border-top: 1px solid #000000;
     }
 }
 
@@ -490,12 +490,6 @@ width: 100%;
 
 
 }
-#page3 #left .igs{
-    background-image: url(/Homepage/hp14.png);
-}
-#page3 #right .igs{
-    background-image: url(/Homepage/hp17.png);
-}
 #page3 .over:hover .igs,
 #page3 .over.is-scroll-expanded .igs{
 width: 100%;
@@ -508,20 +502,34 @@ height: 100%;
     opacity: 1;
 }
 #page4{
-    height: 120vh;
+    position: relative;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 96px 40px 160px;
+    background-color: #ffffff;
     overflow: hidden;
-
 }
-#page4 div{
-    width: 45%;
-    margin-top: 160px;
+#page4 h1{
+    font-family: var(--plevid-font-sans);
+    font-size: var(--plevid-text-display-emphasis);
+    font-weight: var(--plevid-weight-black);
+    line-height: var(--plevid-leading-snug);
+    letter-spacing: var(--plevid-tracking-tight);
+    text-transform: lowercase;
+    color: #000000;
 }
-#page4 div img{
-    transform-origin: left;
+#page4 .over{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    background-color: #ffffff;
+}
+#page4 > div{
+    position: relative;
+    display: flex;
+    align-items: start;
+    overflow: hidden;
+    padding-bottom: 5px;
 }
 #page5{
     height: 100vh;
@@ -560,18 +568,15 @@ height: 100%;
     color: #ffffff;
 }
 #pt1{
-    background-image: url(/Homepage/hp5.jpg);
     z-index: 1;
     clip-path: polygon(0 100%, 100% 100%, 100% 0%, 0 0%);
 }
 #pt2{
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-    background-image: url(/Homepage/hp%2016.jpeg);
     z-index: 2;
 }
 #pt3{
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-    background-image: url(/Homepage/hp%2015.jpg);
     z-index: 3;
 }
 #page6{
@@ -1158,14 +1163,20 @@ span{
     }
 
     #page4 {
-        height: auto;
-        min-height: 60vh;
-        padding: 64px 24px;
+        padding: 64px 24px 96px;
     }
 
-    #page4 div {
-        width: min(90vw, 480px);
-        margin-top: 0;
+    #page4 h1 {
+        font-size: clamp(2rem, 11vw, 3.5rem);
+    }
+
+    #page4 .over {
+        display: none;
+    }
+
+    #page4 > div {
+        overflow: visible;
+        padding-bottom: 8px;
     }
 
     #page5 {

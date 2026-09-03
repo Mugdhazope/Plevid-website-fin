@@ -1,42 +1,53 @@
-const base = '/Homepage';
+const base = '/Revised%20Home%20Page%20Images';
+
+/** Encode a filename so spaces and special chars work in src and CSS url(). */
+function img(name) {
+  return `${base}/${encodeURIComponent(name)}`;
+}
 
 const leftHeights = ['h-sm', 'h-lg', 'h-md', 'h-sm', 'h-xl', 'h-md'];
 const rightHeights = ['h-md', 'h-sm', 'h-lg', 'h-sm', 'h-md', 'h-xl'];
 
-/** Public Homepage assets — paths are URL-safe for src and CSS url(). */
+/**
+ * Homepage assets from public/Revised Home Page Images.
+ * Hero columns are paired left↔right to match Home Page REFERENCES.pdf
+ * (project grid pairs + product/fixture pairs).
+ */
 export const homepageImages = {
   hero: {
+    // Left / right pairs (top → bottom as in the PDF)
     columnLeft: [
-      `${base}/hp1.png`,
-      `${base}/hp2.png`,
-      `${base}/hp3.png`,
-      `${base}/hp4.jpg`,
-      `${base}/hp6.png`,
-      `${base}/hp7.png`,
+      img('DJI_20260713192949_0869_D.JPG'), // ping-pong / wavy ceiling lounge
+      img('DJI_20260713194127_0889_D.JPG'), // elevator lobby
+      img('mict 4.png'), // stone wall + water feature lighting
+      img('grand hyatt.jpg.avif'), // steep-roof resort pool night
+      img('DSC09404.jpg'), // cylindrical outdoor fixture
+      img('Copy of DSC09461.jpg'), // bollards overlooking water
     ],
     columnRight: [
-      `${base}/hp8.jpg`,
-      `${base}/hp9.jpeg`,
-      `${base}/hp10.jpg`,
-      `${base}/hp11.jpg`,
-      `${base}/hp12.jpg`,
-      `${base}/hp13.png`,
+      img('Dahilas.jpg'), // terrace lounge at dusk
+      img('IMG_9225-HDR.jpg'), // facade vertical strip lights
+      img('DJI_20260713192621_0851_D.JPG'), // undulating ceiling detail
+      img('hp13.png'), // bamboo pavilion arches
+      img('Copy of DSC04381.JPG'), // outdoor spotlight / camera fixture
+      img('Copy of DSC09646.jpg'), // recessed ground light in grate
     ],
   },
-  page2: `${base}/DSC04381.JPG`,
+  page2: img('Amari Raya.png'),
   page3: {
-    residential: `${base}/hp14.png`,
-    commercial: `${base}/hp17.png`,
+    // PDF: 01 craftsmanship (warm residential) · 02 immersive (cool grid facade)
+    residential: img('IMG_9775-HDR.jpg'),
+    commercial: img('IMG_8899-HDR.jpg'),
   },
   page5: {
-    collection1: `${base}/hp5.jpg`,
-    collection2: `${base}/hp%2016.jpeg`,
-    collection3: `${base}/hp%2015.jpg`,
+    collection1: img('Panaroma by S Raheja.jpg'),
+    collection2: img('Monte South.jpg'),
+    collection3: img('IMG_8872-HDR.jpg'),
   },
   page9: {
-    one: `${base}/DSC04398.JPG`,
-    two: `${base}/hp4.jpg`,
-    three: `${base}/hp5.jpg`,
+    one: img('hp14.png'),
+    two: img('Amari Raya.png'),
+    three: img('grand hyatt.jpg.avif'),
   },
 };
 

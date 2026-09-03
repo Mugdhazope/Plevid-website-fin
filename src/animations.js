@@ -223,23 +223,21 @@ function page3(){
 }
 
 function eightAnime(){
-  if (!has('#page4 img')) return;
+  const overs = document.querySelectorAll('#page4 .over');
+  if (!overs.length) return;
 
-  gsap.to("#page4 img",{
-    scale:20,
-    rotate:90,
-    y:"-500%",
-    x:"40%",
-    scrollTrigger:{
-      trigger:"#page4",
-      scroller:"#main",
-      // markers:true,
-      start:"16% 0%",
-      end:"top -150%",
-      scrub:1,
-      pin:true
-    }
-  })
+  overs.forEach((ov) => {
+    gsap.to(ov, {
+      width: '0%',
+      scrollTrigger: {
+        trigger: ov,
+        scroller: '#main',
+        start: 'top 55%',
+        end: 'top 15%',
+        scrub: true,
+      },
+    });
+  });
 }
 
 function pg5(){
