@@ -160,7 +160,7 @@ function HeroImages() {
           src={aboutImages.heroRight}
           alt="Plevid project lighting showcase"
           caption=""
-          className="about__hero-figure--right"
+          className="about__hero-figure--right about__hero-figure--grayscale"
           glowClass="about__hero-glow--gold"
           scrollY={yRightScroll}
           floatClass="about__hero-inner--float-b"
@@ -223,7 +223,7 @@ function HeroLite() {
           src={aboutImages.heroRight}
           alt="Plevid project lighting showcase"
           caption="Custom Installation"
-          className="about__hero-figure--right"
+          className="about__hero-figure--right about__hero-figure--grayscale"
           glowClass=""
           scrollY={0}
           floatClass="about__hero-inner--float-b"

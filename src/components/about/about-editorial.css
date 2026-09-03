@@ -139,6 +139,10 @@
   filter: grayscale(1);
 }
 
+.about__hero-figure--grayscale:hover img {
+  filter: grayscale(0) brightness(1.05) contrast(1.03);
+}
+
 .about__hero-inner {
   position: relative;
   width: 100%;

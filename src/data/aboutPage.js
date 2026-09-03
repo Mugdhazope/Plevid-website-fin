@@ -3,7 +3,7 @@ const aboutImg = (filename) => `${aboutBase}/${encodeURIComponent(filename)}`;
 
 export const aboutImages = {
   heroCenter: aboutImg('Homepage1.png'),
-  heroLeft: aboutImg('Homepage 2.png'),
+  heroLeft: aboutImg('IMG_9763-HDR.jpg.jpeg'),
   heroRight: aboutImg('Homepage 3.png'),
   ceoMessage: 'https://selemen.liqium.com/img/bg13.jpg',
 };
